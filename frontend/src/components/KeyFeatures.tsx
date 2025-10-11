@@ -1,8 +1,6 @@
 import type { FC } from 'react';
 import { Typography, Box, Stack } from '@mui/material';
-import DeviceHubOutlinedIcon from '@mui/icons-material/DeviceHubOutlined';
-import PriceChangeOutlinedIcon from '@mui/icons-material/PriceChangeOutlined';
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import Image from 'next/image';
 import FeatureCard from './FeatureCard';
 
 const KeyFeatures: FC = () => {
@@ -13,14 +11,20 @@ const KeyFeatures: FC = () => {
           sx={{
             width: 80,
             height: 80,
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #9B59B6 0%, #E91E8C 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            overflow: 'hidden',
+            position: 'relative',
           }}
         >
-          <DeviceHubOutlinedIcon sx={{ fontSize: 40, color: '#FFFFFF' }} />
+          <Image
+            src="/seamlessINT.png"
+            alt="Seamless Integration"
+            width={80}
+            height={80}
+            style={{ objectFit: 'cover' }}
+          />
         </Box>
       ),
       title: 'Seamless Integration',
@@ -34,13 +38,20 @@ const KeyFeatures: FC = () => {
             width: 80,
             height: 80,
             borderRadius: '50%',
-            background: 'linear-gradient(135deg, #FFD700 0%, #4A90E2 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            overflow: 'hidden',
+            position: 'relative',
           }}
         >
-          <PriceChangeOutlinedIcon sx={{ fontSize: 40, color: '#0A0A0A' }} />
+          <Image
+            src="/lowTransaction.png"
+            alt="Low Transaction Fee"
+            width={80}
+            height={80}
+            style={{ objectFit: 'cover' }}
+          />
         </Box>
       ),
       title: 'Low Transaction Fee',
@@ -54,13 +65,20 @@ const KeyFeatures: FC = () => {
             width: 80,
             height: 80,
             borderRadius: '50%',
-            background: 'linear-gradient(135deg, #9B59B6 0%, #FFD700 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            overflow: 'hidden',
+            position: 'relative',
           }}
         >
-          <LanguageOutlinedIcon sx={{ fontSize: 40, color: '#FFFFFF' }} />
+          <Image
+            src="/GlobalAccess.png"
+            alt="Global Accessibility"
+            width={80}
+            height={80}
+            style={{ objectFit: 'cover' }}
+          />
         </Box>
       ),
       title: 'Global Accessibility',
