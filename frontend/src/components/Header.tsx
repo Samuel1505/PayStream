@@ -10,7 +10,7 @@ const Header: FC = () => {
         WebkitTextFillColor: 'transparent',
         backgroundClip: 'text',
       }}>
-        PayRoll
+        PayStream
       </div>
       
       <Button
