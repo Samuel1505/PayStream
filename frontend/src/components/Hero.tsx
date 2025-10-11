@@ -58,14 +58,24 @@ const Hero: FC = () => {
         <Typography
           variant="h1"
           sx={{
-            fontSize: { xs: '2.5rem', md: '4rem', lg: '4.5rem' },
-            fontWeight: 900,
+            fontFamily: '"Inter", sans-serif',
+            fontSize: { xs: '2.5rem', md: '4rem', lg: '64px' },
+            fontWeight: 700,
             mb: 3,
-            lineHeight: 1.2,
+            lineHeight: '100%',
+            letterSpacing: '0%',
+            textAlign: 'center',
           }}
         >
           Revolutionize Your{' '}
-          <span style={{ color: '#E91E8C' }}>PayRoll</span>
+          <span style={{ 
+            color: '#E91E8C',
+            fontFamily: '"Inter", sans-serif',
+            fontWeight: 700,
+            fontSize: 'inherit',
+            lineHeight: '100%',
+            letterSpacing: '0%',
+          }}>PayRoll</span>
           <br />
           with <span style={{ color: '#FFD700' }}>Crypto</span>
         </Typography>
