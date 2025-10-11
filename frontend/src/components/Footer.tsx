@@ -63,7 +63,7 @@ const Footer: FC = () => {
               backgroundClip: 'text',
             }}
           >
-            PayRoll
+            PayStream
           </Typography>
         </Box>
 
