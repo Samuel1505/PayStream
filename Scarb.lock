@@ -5,18 +5,18 @@ version = 1
 name = "smartcontract"
 version = "0.1.0"
 dependencies = [
- "snforge_std_deprecated",
+ "snforge_std",
 ]
 
 [[package]]
-name = "snforge_scarb_plugin_deprecated"
-version = "0.50.0"
-source = "git+https://github.com/foundry-rs/starknet-foundry?tag=v0.50.0#bf0ade0de89c51c80dcc376b7c0a6d3e7aded962"
+name = "snforge_scarb_plugin"
+version = "0.49.0"
+source = "git+https://github.com/foundry-rs/starknet-foundry?tag=v0.49.0#ddaa0a0cb1946b31de619d2343a44636bc50e945"
 
 [[package]]
-name = "snforge_std_deprecated"
-version = "0.50.0"
-source = "git+https://github.com/foundry-rs/starknet-foundry?tag=v0.50.0#bf0ade0de89c51c80dcc376b7c0a6d3e7aded962"
+name = "snforge_std"
+version = "0.49.0"
+source = "git+https://github.com/foundry-rs/starknet-foundry?tag=v0.49.0#ddaa0a0cb1946b31de619d2343a44636bc50e945"
 dependencies = [
- "snforge_scarb_plugin_deprecated",
+ "snforge_scarb_plugin",
 ]
