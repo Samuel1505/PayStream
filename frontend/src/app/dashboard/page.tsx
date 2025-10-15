@@ -1,6 +1,9 @@
 'use client';
 
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Box, Stack } from '@mui/material';
+import { useAccount } from '@starknet-react/core';
 import DashboardLayout from '../../components/dashboard/DashboardLayout';
 import DashboardHeader from '../../components/dashboard/DashboardHeader';
 import MetricCard from '../../components/dashboard/MetricCard';
@@ -14,13 +17,26 @@ import { mockStore, mockQuery } from '../../data/dashboardMockData';
 import { formatCurrency } from '../../utils/formatters';
 
 export default function DashboardPage() {
+  const router = useRouter();
+  const { address, isConnected } = useAccount();
+
+  useEffect(() => {
+    console.log('Dashboard - Connected:', isConnected);
+    console.log('Dashboard - Address:', address);
+    
+    // Optional: Redirect to home if not connected
+    // if (!isConnected) {
+    //   router.push('/');
+    // }
+  }, [isConnected, address, router]);
+
   const handleViewAllActivities = () => {
     console.log('View all activities');
   };
 
   return (
     <DashboardLayout>
-      <DashboardHeader walletAddress={mockStore.walletAddress} />
+      <DashboardHeader />
 
       {/* First row of metrics */}
       <Stack direction={{ xs: 'column', md: 'row' }} spacing={3} sx={{ mb: 3 }}>

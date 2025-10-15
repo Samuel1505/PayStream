@@ -5,6 +5,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import theme from '../theme/theme';
+import { StarknetConfig, publicProvider, voyager } from "@starknet-react/core";
+import { sepolia, mainnet } from "@starknet-react/chains";
+import { ArgentMobileConnector } from "starknetkit/argentMobile";
+import { WebWalletConnector } from "starknetkit/webwallet";
+import { InjectedConnector } from "starknetkit/injected";
 
 const createEmotionCache = () => {
   return createCache({
@@ -16,11 +21,28 @@ const createEmotionCache = () => {
 const emotionCache = createEmotionCache();
 
 export function Providers({ children }: { children: React.ReactNode }) {
+  const chains = [mainnet, sepolia];
+  
+  const connectors = [
+    new InjectedConnector({ options: { id: "argentX", name: "Argent X" } }),
+    new InjectedConnector({ options: { id: "braavos", name: "Braavos" } }),
+    new ArgentMobileConnector(),
+    new WebWalletConnector({ url: "https://web.argent.xyz" }),
+  ];
+
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {children}
+        <StarknetConfig 
+          chains={chains} 
+          provider={publicProvider()}
+          connectors={connectors}
+          explorer={voyager}
+          autoConnect
+        >
+          {children}
+        </StarknetConfig>
       </ThemeProvider>
     </CacheProvider>
   );
