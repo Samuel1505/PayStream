@@ -25,7 +25,8 @@ export default function PaymentPage() {
 
   return (
     <DashboardLayout currentPage={NavigationItem.PAYMENT}>
-      <DashboardHeader walletAddress={mockStore.walletAddress || '0xj...0bx'} />
+      {/* DashboardHeader handles wallet address via useAccount hook */}
+      <DashboardHeader />
 
       {/* Header Metrics */}
       <Stack direction={{ xs: 'column', md: 'row' }} spacing={3} sx={{ mb: 4 }}>

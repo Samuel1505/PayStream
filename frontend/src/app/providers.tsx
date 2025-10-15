@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import theme from '../theme/theme';
-import { StarknetConfig, publicProvider, voyager } from "@starknet-react/core";
+import { StarknetConfig, publicProvider, voyager, Connector } from "@starknet-react/core";
 import { sepolia, mainnet } from "@starknet-react/chains";
 import { ArgentMobileConnector } from "starknetkit/argentMobile";
 import { WebWalletConnector } from "starknetkit/webwallet";
@@ -37,7 +37,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <StarknetConfig 
           chains={chains} 
           provider={publicProvider()}
-          connectors={connectors}
+          connectors={connectors as Connector[]}
           explorer={voyager}
           autoConnect
         >
