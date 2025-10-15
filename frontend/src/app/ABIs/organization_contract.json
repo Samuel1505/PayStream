@@ -1,0 +1,542 @@
+[
+  {
+    "type": "impl",
+    "name": "OrganizationContractImpl",
+    "interface_name": "smartcontract::organization_contract::IOrganizationContract"
+  },
+  {
+    "type": "struct",
+    "name": "core::integer::u256",
+    "members": [
+      {
+        "name": "low",
+        "type": "core::integer::u128"
+      },
+      {
+        "name": "high",
+        "type": "core::integer::u128"
+      }
+    ]
+  },
+  {
+    "type": "enum",
+    "name": "core::bool",
+    "variants": [
+      {
+        "name": "False",
+        "type": "()"
+      },
+      {
+        "name": "True",
+        "type": "()"
+      }
+    ]
+  },
+  {
+    "type": "struct",
+    "name": "smartcontract::organization_contract::Recipient",
+    "members": [
+      {
+        "name": "id",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252"
+      },
+      {
+        "name": "wallet",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "salary",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "advance_limit",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "current_advance",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "has_advance",
+        "type": "core::bool"
+      }
+    ]
+  },
+  {
+    "type": "struct",
+    "name": "smartcontract::organization_contract::Payment",
+    "members": [
+      {
+        "name": "id",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "recipient_id",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "recipient_wallet",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "fee",
+        "type": "core::integer::u256"
+      },
+      {
+        "name": "timestamp",
+        "type": "core::integer::u64"
+      },
+      {
+        "name": "token",
+        "type": "core::starknet::contract_address::ContractAddress"
+      }
+    ]
+  },
+  {
+    "type": "interface",
+    "name": "smartcontract::organization_contract::IOrganizationContract",
+    "items": [
+      {
+        "type": "function",
+        "name": "create_recipient",
+        "inputs": [
+          {
+            "name": "name",
+            "type": "core::felt252"
+          },
+          {
+            "name": "wallet",
+            "type": "core::starknet::contract_address::ContractAddress"
+          },
+          {
+            "name": "salary",
+            "type": "core::integer::u256"
+          },
+          {
+            "name": "advance_limit",
+            "type": "core::integer::u256"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "core::integer::u256"
+          }
+        ],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "update_recipient",
+        "inputs": [
+          {
+            "name": "recipient_id",
+            "type": "core::integer::u256"
+          },
+          {
+            "name": "name",
+            "type": "core::felt252"
+          },
+          {
+            "name": "wallet",
+            "type": "core::starknet::contract_address::ContractAddress"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "update_salary",
+        "inputs": [
+          {
+            "name": "recipient_id",
+            "type": "core::integer::u256"
+          },
+          {
+            "name": "new_salary",
+            "type": "core::integer::u256"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "get_recipient",
+        "inputs": [
+          {
+            "name": "recipient_id",
+            "type": "core::integer::u256"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "smartcontract::organization_contract::Recipient"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "disburse_token",
+        "inputs": [
+          {
+            "name": "recipient_id",
+            "type": "core::integer::u256"
+          },
+          {
+            "name": "token",
+            "type": "core::starknet::contract_address::ContractAddress"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "batch_disburse_token",
+        "inputs": [
+          {
+            "name": "recipient_ids",
+            "type": "core::array::Array::<core::integer::u256>"
+          },
+          {
+            "name": "token",
+            "type": "core::starknet::contract_address::ContractAddress"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "request_advance",
+        "inputs": [
+          {
+            "name": "recipient_id",
+            "type": "core::integer::u256"
+          },
+          {
+            "name": "amount",
+            "type": "core::integer::u256"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "approve_advance",
+        "inputs": [
+          {
+            "name": "recipient_id",
+            "type": "core::integer::u256"
+          },
+          {
+            "name": "amount",
+            "type": "core::integer::u256"
+          },
+          {
+            "name": "token",
+            "type": "core::starknet::contract_address::ContractAddress"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "update_transaction_fee",
+        "inputs": [
+          {
+            "name": "new_fee",
+            "type": "core::integer::u256"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "update_fee_collector",
+        "inputs": [
+          {
+            "name": "new_collector",
+            "type": "core::starknet::contract_address::ContractAddress"
+          }
+        ],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "get_owner",
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "core::starknet::contract_address::ContractAddress"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "get_transaction_fee",
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "core::integer::u256"
+          }
+        ],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "get_payment",
+        "inputs": [
+          {
+            "name": "payment_id",
+            "type": "core::integer::u256"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "smartcontract::organization_contract::Payment"
+          }
+        ],
+        "state_mutability": "view"
+      }
+    ]
+  },
+  {
+    "type": "constructor",
+    "name": "constructor",
+    "inputs": [
+      {
+        "name": "owner",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "factory",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "fee_collector",
+        "type": "core::starknet::contract_address::ContractAddress"
+      },
+      {
+        "name": "transaction_fee",
+        "type": "core::integer::u256"
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "smartcontract::organization_contract::OrganizationContract::RecipientCreated",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "recipient_id",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252",
+        "kind": "data"
+      },
+      {
+        "name": "wallet",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "salary",
+        "type": "core::integer::u256",
+        "kind": "data"
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "smartcontract::organization_contract::OrganizationContract::RecipientUpdated",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "recipient_id",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "name",
+        "type": "core::felt252",
+        "kind": "data"
+      },
+      {
+        "name": "wallet",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "smartcontract::organization_contract::OrganizationContract::SalaryUpdated",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "recipient_id",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "old_salary",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "new_salary",
+        "type": "core::integer::u256",
+        "kind": "data"
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "smartcontract::organization_contract::OrganizationContract::PaymentDisbursed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "payment_id",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "recipient_id",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "recipient_wallet",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "fee",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "token",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "smartcontract::organization_contract::OrganizationContract::AdvanceRequested",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "recipient_id",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u256",
+        "kind": "data"
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "smartcontract::organization_contract::OrganizationContract::AdvanceApproved",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "recipient_id",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "amount",
+        "type": "core::integer::u256",
+        "kind": "data"
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "smartcontract::organization_contract::OrganizationContract::FeeUpdated",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "old_fee",
+        "type": "core::integer::u256",
+        "kind": "data"
+      },
+      {
+        "name": "new_fee",
+        "type": "core::integer::u256",
+        "kind": "data"
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "smartcontract::organization_contract::OrganizationContract::Event",
+    "kind": "enum",
+    "variants": [
+      {
+        "name": "RecipientCreated",
+        "type": "smartcontract::organization_contract::OrganizationContract::RecipientCreated",
+        "kind": "nested"
+      },
+      {
+        "name": "RecipientUpdated",
+        "type": "smartcontract::organization_contract::OrganizationContract::RecipientUpdated",
+        "kind": "nested"
+      },
+      {
+        "name": "SalaryUpdated",
+        "type": "smartcontract::organization_contract::OrganizationContract::SalaryUpdated",
+        "kind": "nested"
+      },
+      {
+        "name": "PaymentDisbursed",
+        "type": "smartcontract::organization_contract::OrganizationContract::PaymentDisbursed",
+        "kind": "nested"
+      },
+      {
+        "name": "AdvanceRequested",
+        "type": "smartcontract::organization_contract::OrganizationContract::AdvanceRequested",
+        "kind": "nested"
+      },
+      {
+        "name": "AdvanceApproved",
+        "type": "smartcontract::organization_contract::OrganizationContract::AdvanceApproved",
+        "kind": "nested"
+      },
+      {
+        "name": "FeeUpdated",
+        "type": "smartcontract::organization_contract::OrganizationContract::FeeUpdated",
+        "kind": "nested"
+      }
+    ]
+  }
+]
