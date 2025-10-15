@@ -136,8 +136,8 @@ API example endpoints (REST):
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/your-org/paystream.git
-cd paystream
+git clone https://github.com/Samuel1505/PayStream.git
+cd PayStream
 ```
 
 2. Install packages for frontend and backend:
