@@ -29,7 +29,7 @@ const Header: FC = () => {
           },
         }}
       >
-        Button
+        Connect Wallet
       </Button>
     </header>
   );
